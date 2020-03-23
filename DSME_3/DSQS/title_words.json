@@ -1,3 +1,4 @@
 {
-	"words": ["( Unit : mm )", "Remarks", "Remark", "(Unit: mm)", "(Unit:", "(단위: mm)", "C", "O", "R", "D"]
+	"words": ["( Unit : mm )", "Remarks", "Remark", "(Unit: mm)", "(Unit:", "(단위: mm)", "C", "O", "R", "D"],
+	"partIII_titles": ["1. Hull outfitting part", "2. Machinery part", "3. Piping part", "4. Electric part", "5. Remote control/automation part"]
 }

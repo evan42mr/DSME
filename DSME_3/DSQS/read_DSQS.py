@@ -64,6 +64,7 @@ def line_cutting(line):
             break
     return new_line
 
+
 # FILE_NAME = "DSQS-2016.txt"
 FILE_NAME = "2019_DSQS_English.txt"
 # FILE_NAME = "2019_DSQS_.txt" # Korean
@@ -75,6 +76,8 @@ part = ""
 part_2 = ""
 temp_part = ""
 temp_part_2 = ""
+partIII_titles = title_dict['partIII_titles']
+partIII_text = ""
 
 with open(FILE_NAME) as f:
     for i, line in enumerate(f):
@@ -97,7 +100,38 @@ with open(FILE_NAME) as f:
                 and len(line.split()) > 1 \
                 and not line.split()[-1].isdigit() \
                 and leading_spaces < 2:
-            #             print(f"line: [{line}]")
+
+            # Part III with tables
+            if temp_part.strip() == 'PART Ⅲ. OUTFITTING & MACHINERY PART' \
+                    and line_cutting(temp_part_2) == 'Ⅱ. CATEGORIES OF INSPECTION AND TEST ITEMS':
+                if line.lstrip()[0].isdigit() and line.split()[0][1] == '.':
+                    if check_spaces(line):
+                        if check_special_words(line):
+                            if partIII_titles and line_cutting(line) == partIII_titles[0]:
+
+                                if text:
+                                    print(f"part: {part}")
+                                    print(f"part_2: {part_2}")
+                                    print(f"pos: [{pos}]")
+                                    print(f"title: {title}")
+                                    #                                     print(f"text:")
+                                    #                                     print(print_text(text))
+                                    print("-" * 60)
+                                    text = []
+
+                                if partIII_titles and line_cutting(line) == partIII_titles[0]:
+                                    partIII_titles.pop(0)
+                                    # pos = line
+                                    # pos = stop_words(line)
+                                    pos = line_cutting(line)
+                                    part = temp_part
+                                    part_2 = line_cutting(temp_part_2)
+                                    # part_2 = temp_part_2
+
+                                    title = ""
+
+                continue
+
             # For titles and sub-titles with pos of 2 figures ex. 12. Title
             if len(line.split()[0]) > 2:
                 if line.lstrip()[0].isdigit() and line.split()[0][2] == '.':
@@ -109,21 +143,20 @@ with open(FILE_NAME) as f:
                                 print(f"part_2: {part_2}")
                                 print(f"pos: [{pos}]")
                                 print(f"title: {title}")
-                                #                                 print("text:")
-                                #                                 print(print_text(text))
+                                # print("text:")
+                                # print(print_text(text))
                                 text = []
                                 print('-' * 60)
 
                             if len(line.split()[0]) == 3:
-                                #                                 print(f"pos: [{line}]")
-                                pos = stop_words(line)
+                                pos = line_cutting(line)
                                 part = temp_part
-                                part_2 = temp_part_2
-                                pos = line
+                                part_2 = line_cutting(temp_part_2)
+
                                 title = ""
                             else:
-                                title = stop_words(line)
-                                title = line
+                                title = line_cutting(line)
+
 
                     else:
                         if text:
@@ -131,65 +164,80 @@ with open(FILE_NAME) as f:
                             print(f"part_2: {part_2}")
                             print(f"pos: [{pos}]")
                             print(f"title: {title}")
-                            #                             print("text:")
-                            #                             print(print_text(text))
+                            # print("text:")
+                            # print(print_text(text))
                             text = []
                             print('-' * 60)
 
                         if len(line.split()[0]) == 3:
-                            pos = stop_words(line)
-                            pos = line
+                            pos = line_cutting(line)
                             part = temp_part
-                            part_2 = temp_part_2
+                            part_2 = line_cutting(temp_part_2)
                             title = ""
                         else:
-                            title = stop_words(line)
-                            title = line
+                            title = line_cutting(line)
 
             if line.lstrip()[0].isdigit() and line.split()[0][1] == '.':
 
                 if check_spaces(line):
                     if check_special_words(line):
+
+                        if temp_part.strip() == 'PART Ⅱ.              HULL PART' \
+                                and line_cutting(temp_part_2) == 'Ⅱ. CATEGORIES OF INSPECTION AND TEST ITEMS' \
+                                and pos == '1. Hull structure part':
+                            continue
+
+                        if temp_part.strip() == 'PART Ⅲ. OUTFITTING & MACHINERY PART' \
+                                and line_cutting(temp_part_2) == 'Ⅱ. CATEGORIES OF INSPECTION AND TEST ITEMS':
+
+                            continue
+
                         if text:
                             print(f"part: {part}")
                             print(f"part_2: {part_2}")
                             print(f"pos: [{pos}]")
                             print(f"title: {title}")
-                            #                             print("text:")
-                            #                             print(print_text(text))
+                            # print("text:")
+                            # print(print_text(text))
                             text = []
                             print('-' * 60)
 
                         if len(line.split()[0]) == 2:
-                            pos = stop_words(line)
+                            pos = line_cutting(line)
                             part = temp_part
-                            part_2 = temp_part_2
-                            pos = line
+                            part_2 = line_cutting(temp_part_2)
+
                             title = ""
                         else:
-                            title = stop_words(line)
-                #                             title = line
+                            title = line_cutting(line)
+
 
                 else:
+                    # print("else ===>")
+                    if temp_part.strip() == 'PART Ⅲ. OUTFITTING & MACHINERY PART' \
+                            and line_cutting(temp_part_2) == 'Ⅱ. CATEGORIES OF INSPECTION AND TEST ITEMS':
+                        continue
+
                     if text:
                         print(f"part: {part}")
                         print(f"part_2: {part_2}")
                         print(f"pos: [{pos}]")
                         print(f"title: {title}")
-                        #                         print("text:")
-                        #                         print(print_text(text))
+                        # print("text:")
+                        # print(print_text(text))
                         text = []
                         print('-' * 60)
 
                     if len(line.split()[0]) == 2:
-                        pos = stop_words(line)
+
+                        pos = line_cutting(line)
                         part = temp_part
-                        part_2 = temp_part_2
-                        #                         pos = line
+                        part_2 = line_cutting(temp_part_2)
+
                         title = ""
                     else:
-                        title = stop_words(line)
-                        title = line
+
+                        title = line_cutting(line)
 
 if text:
     print(f"part: {part}")
