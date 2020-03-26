@@ -87,6 +87,10 @@ with open(FILE_NAME) as f:
         if line.strip() and line.split()[0] == 'PART':
             temp_part = line
 
+        if line.strip() and line.split()[0] in ['1장.', '2장.'] \
+                or line.strip() and len(line.split()) > 2 and line.split()[0].isdigit() and line.split()[1] == '장.':
+            temp_part = line
+
         if line.strip() \
                 and len(line.split()) > 2 \
                 and check_roman_chapters(line.split()[0]) \
@@ -114,8 +118,8 @@ with open(FILE_NAME) as f:
                                     print(f"part_2: {part_2}")
                                     print(f"pos: [{pos}]")
                                     print(f"title: {title}")
-                                    #                                     print(f"text:")
-                                    #                                     print(print_text(text))
+                                    #print(f"text:")
+                                    #print(print_text(text))
                                     print("-" * 60)
                                     text = []
 
@@ -143,8 +147,8 @@ with open(FILE_NAME) as f:
                                 print(f"part_2: {part_2}")
                                 print(f"pos: [{pos}]")
                                 print(f"title: {title}")
-                                # print("text:")
-                                # print(print_text(text))
+                                #print("text:")
+                                #print(print_text(text))
                                 text = []
                                 print('-' * 60)
 
@@ -164,8 +168,8 @@ with open(FILE_NAME) as f:
                             print(f"part_2: {part_2}")
                             print(f"pos: [{pos}]")
                             print(f"title: {title}")
-                            # print("text:")
-                            # print(print_text(text))
+                            #print("text:")
+                            #print(print_text(text))
                             text = []
                             print('-' * 60)
 
@@ -197,8 +201,8 @@ with open(FILE_NAME) as f:
                             print(f"part_2: {part_2}")
                             print(f"pos: [{pos}]")
                             print(f"title: {title}")
-                            # print("text:")
-                            # print(print_text(text))
+                            #print("text:")
+                            #print(print_text(text))
                             text = []
                             print('-' * 60)
 
@@ -223,8 +227,8 @@ with open(FILE_NAME) as f:
                         print(f"part_2: {part_2}")
                         print(f"pos: [{pos}]")
                         print(f"title: {title}")
-                        # print("text:")
-                        # print(print_text(text))
+                        #print("text:")
+                        #print(print_text(text))
                         text = []
                         print('-' * 60)
 
@@ -244,6 +248,6 @@ if text:
     print(f"part_2: {part_2}")
     print(f"pos: [{pos}]")
     print(f"title: {title}")
-    #     print("text:")
-    #     print(print_text(text))
+    #print("text:")
+    #print(print_text(text))
     text = []
