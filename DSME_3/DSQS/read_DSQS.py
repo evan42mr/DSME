@@ -66,8 +66,8 @@ def line_cutting(line):
 
 
 # FILE_NAME = "DSQS-2016.txt"
-FILE_NAME = "2019_DSQS_English.txt"
-# FILE_NAME = "2019_DSQS_.txt" # Korean
+# FILE_NAME = "2019_DSQS_English.txt"
+FILE_NAME = "2019_DSQS_.txt" # Korean
 
 text = []
 pos = ""
@@ -76,7 +76,7 @@ part = ""
 part_2 = ""
 temp_part = ""
 temp_part_2 = ""
-partIII_titles = title_dict['partIII_titles']
+partIII_titles = title_dict['partIII']['partIII_titles']
 partIII_text = ""
 
 with open(FILE_NAME) as f:
@@ -106,8 +106,8 @@ with open(FILE_NAME) as f:
                 and leading_spaces < 2:
 
             # Part III with tables
-            if temp_part.strip() == 'PART Ⅲ. OUTFITTING & MACHINERY PART' \
-                    and line_cutting(temp_part_2) == 'Ⅱ. CATEGORIES OF INSPECTION AND TEST ITEMS':
+            if temp_part.strip() in title_dict['partIII']['partIII'] \
+                    and line_cutting(temp_part_2) in title_dict['partIII']['section']:
                 if line.lstrip()[0].isdigit() and line.split()[0][1] == '.':
                     if check_spaces(line):
                         if check_special_words(line):
@@ -184,15 +184,16 @@ with open(FILE_NAME) as f:
             if line.lstrip()[0].isdigit() and line.split()[0][1] == '.':
 
                 if check_spaces(line):
+                    # print(f"if check_spaces(line):\n{i} : {line}")
                     if check_special_words(line):
+                        if temp_part.strip() in title_dict['partII']['partII'] \
+                                and line_cutting(temp_part_2) in title_dict['partII']['section'] \
+                                and pos in title_dict['partII']['pos']:
 
-                        if temp_part.strip() == 'PART Ⅱ.              HULL PART' \
-                                and line_cutting(temp_part_2) == 'Ⅱ. CATEGORIES OF INSPECTION AND TEST ITEMS' \
-                                and pos == '1. Hull structure part':
                             continue
 
-                        if temp_part.strip() == 'PART Ⅲ. OUTFITTING & MACHINERY PART' \
-                                and line_cutting(temp_part_2) == 'Ⅱ. CATEGORIES OF INSPECTION AND TEST ITEMS':
+                        if temp_part.strip() in title_dict['partIII']['partIII'] \
+                                and line_cutting(temp_part_2) in title_dict['partIII']['section']:
 
                             continue
 
@@ -218,8 +219,8 @@ with open(FILE_NAME) as f:
 
                 else:
                     # print("else ===>")
-                    if temp_part.strip() == 'PART Ⅲ. OUTFITTING & MACHINERY PART' \
-                            and line_cutting(temp_part_2) == 'Ⅱ. CATEGORIES OF INSPECTION AND TEST ITEMS':
+                    if temp_part.strip() in title_dict['partIII']['partIII'] \
+                            and line_cutting(temp_part_2) in title_dict['partIII']['section']:
                         continue
 
                     if text:

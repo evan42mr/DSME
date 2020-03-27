@@ -1,13 +1,14 @@
 {
 	"words": ["( Unit : mm )", "Remarks", "Remark", "(Unit: mm)", "(Unit:", "(단위: mm)", "C", "O", "R", "D"],
-	"partIII_titles": ["1. Hull outfitting part", "2. Machinery part", "3. Piping part", "4. Electric part", "5. Remote control/automation part"],
+
 	"partII": {
-		"partII" : "PART Ⅱ.              HULL PART",
-		"section" : "Ⅱ. CATEGORIES OF INSPECTION AND TEST ITEMS",
-		"pos" : "1. Hull structure part"
+		"partII" : ["PART Ⅱ.              HULL PART", "2장. 선체 분야"],
+        "section" : ["Ⅱ. CATEGORIES OF INSPECTION AND TEST ITEMS", "Ⅱ. 검사 및 시험 항목"],
+        "pos" : ["1. Hull structure part", "1. 선체 구조 분야"]
 	},
 	"partIII": {
-		"partIII" : "PART Ⅲ. OUTFITTING & MACHINERY PART",
-		"section" : "Ⅱ. CATEGORIES OF INSPECTION AND TEST ITEMS"
+		"partIII_titles": ["1. Hull outfitting part", "2. Machinery part", "3. Piping part", "4. Electric part", "5. Remote control/automation part"],
+		"partIII" : ["PART Ⅲ. OUTFITTING & MACHINERY PART"],
+        "section" : ["Ⅱ. CATEGORIES OF INSPECTION AND TEST ITEMS"]
 	}
 }

@@ -71,7 +71,7 @@ def line_cutting(line):
 # FILE_NAME = "DSQS-2016.txt"
 FILE_NAME = "2019_DSQS_English.txt"
 # FILE_NAME = "2019_DSQS_.txt" # Korean
-
+ 
 table_name = "dsqs"
 file_name_without_extension = "DSQS-2016"
 text = []
