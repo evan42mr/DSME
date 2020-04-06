@@ -8,7 +8,8 @@
 	},
 	"partIII": {
 		"partIII_titles": ["1. Hull outfitting part", "2. Machinery part", "3. Piping part", "4. Electric part", "5. Remote control/automation part"],
-		"partIII" : ["PART Ⅲ. OUTFITTING & MACHINERY PART"],
-        "section" : ["Ⅱ. CATEGORIES OF INSPECTION AND TEST ITEMS"]
+		"partIII_titles_kor" : ["1. 선체 의장 분야", "2. 기관 의장 분야", "3. 배관 의장 분야", "4. 전기 의장 분야", "5. 원격조정/자동화 분야"],
+		"partIII" : ["PART Ⅲ. OUTFITTING & MACHINERY PART", "3 장. 의장 분야"],
+        "section" : ["Ⅱ. CATEGORIES OF INSPECTION AND TEST ITEMS", "Ⅱ. 검사 및 시험 항목"]
 	}
 }

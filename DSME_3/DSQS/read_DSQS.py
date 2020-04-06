@@ -76,7 +76,8 @@ part = ""
 part_2 = ""
 temp_part = ""
 temp_part_2 = ""
-partIII_titles = title_dict['partIII']['partIII_titles']
+# partIII_titles = title_dict['partIII']['partIII_titles']
+partIII_titles = title_dict['partIII']['partIII_titles_kor']
 partIII_text = ""
 
 with open(FILE_NAME) as f:
@@ -182,13 +183,13 @@ with open(FILE_NAME) as f:
                             title = line_cutting(line)
 
             if line.lstrip()[0].isdigit() and line.split()[0][1] == '.':
-
-                if check_spaces(line):
+                if check_spaces(line) and line.strip() != "1. 재                  료":
+                    # print(f"if --> {i} : {line}")
                     # print(f"if check_spaces(line):\n{i} : {line}")
                     if check_special_words(line):
                         if temp_part.strip() in title_dict['partII']['partII'] \
                                 and line_cutting(temp_part_2) in title_dict['partII']['section'] \
-                                and pos in title_dict['partII']['pos']:
+                                 and pos in title_dict['partII']['pos']:
 
                             continue
 
@@ -218,7 +219,7 @@ with open(FILE_NAME) as f:
 
 
                 else:
-                    # print("else ===>")
+                    # print(f"else --> {i} : {line}")
                     if temp_part.strip() in title_dict['partIII']['partIII'] \
                             and line_cutting(temp_part_2) in title_dict['partIII']['section']:
                         continue
@@ -234,8 +235,10 @@ with open(FILE_NAME) as f:
                         print('-' * 60)
 
                     if len(line.split()[0]) == 2:
-
-                        pos = line_cutting(line)
+                        if line.strip() == "1. 재                  료":
+                            pos = line
+                        else:
+                            pos = line_cutting(line)
                         part = temp_part
                         part_2 = line_cutting(temp_part_2)
 
